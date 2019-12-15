@@ -3,6 +3,35 @@ import './Users.css';
 
 
 class Users extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {value: '',
+                       value1: ''};
+    
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+      }
+    
+      handleChange(event) {
+    
+        if(event.target.name==="t1"){
+          this.setState({value: event.target.value});
+        }else{
+          this.setState({value1: event.target.value});
+        }
+       
+       
+       }
+
+    handleSubmit(event) {
+        if(this.state.value==='kjsieit' && this.state.value1==='1234'){
+            window.location.href = "http://localhost:3000/user";
+       
+        event.preventDefault();
+        }else
+        alert('please enter right credentials !')
+      }
     render() {
         return (
             <div class="limiter">
@@ -12,13 +41,13 @@ class Users extends Component {
                         <img src="img-01.png" alt="IMG"/>
                     </div>
     
-                    <form class="login100-form validate-form">
+                    <form class="login100-form validate-form" onSubmit={this.handleSubmit}>
                         <span class="login100-form-title">
                             Member Login
                         </span>
     
                         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                            <input class="input100" type="text" name="email" placeholder="Email"/>
+                            <input class="input100" type="text"name="t1"value={this.state.value} onChange={this.handleChange} placeholder="Username:"/>
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -26,7 +55,7 @@ class Users extends Component {
                         </div>
     
                         <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                            <input class="input100" type="password" name="pass" placeholder="Password"/>
+                            <input class="input100" type="password" name="p1"value={this.state.value1} onChange={this.handleChange} placeholder="Password" />
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fa fa-lock" aria-hidden="true"></i>

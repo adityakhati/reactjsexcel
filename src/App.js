@@ -9,8 +9,13 @@ import {
   Link
 } from "react-router-dom"
 import Users from './components/Users';
+import Filter from './components/filter';
+import Dashboard from './components/Dashboard';
+import Studentdata from './components/Studentdata';
+
 class App extends Component {
   render() {
+    
   return (
 
     // <Router >
@@ -24,26 +29,35 @@ class App extends Component {
     // </Router>
     <Router>
     <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/users">Users</Link>
-          </li>
-        </ul>
-      </nav>
+        { <nav>
+          <ul>
+
+            
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
+          </ul>
+        </nav> }
 
       {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
       <Switch>
-      <Route path="/users">
-          <Users />
-        </Route>
-        <Route path="/">
+      <Route path="/user">
           <Home />
         </Route>
+        <Route path="/filter">
+          <Filter/>
+        </Route>
+        <Route path="/dashboard">
+          <Dashboard/>
+          </Route>
+          <Route path="/studentdata">
+          <Studentdata/>
+          </Route>
+      <Route path="/">
+          <Users />
+        </Route>
+
       </Switch>
     </div>
   </Router>

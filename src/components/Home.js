@@ -5,6 +5,8 @@ import { Col, Input, InputGroup, InputGroupAddon, FormGroup, Label, Button, Fade
 
 class Home extends Component {
 
+  
+
   constructor(props){
     super(props);
     this.state={
@@ -136,6 +138,7 @@ class Home extends Component {
   console.log(elitegoldsum);
   console.log(successCompsum);
   console.log(elitesilversum);
+  
 }
 
   renderFile = (fileObj) => {
@@ -192,8 +195,23 @@ class Home extends Component {
     window.open(url, '_blank');
   }
 
+
+
+  handleSubmit(event) {
+    
+        window.location.href = "http://localhost:3000/filter";
+   
+    event.preventDefault();
+  
+   
+  }
+  
+
+
   render() {
+   
     return (
+      
       <div style={{marginTop:"100px"}}>
         <Container>
         <form>
@@ -202,8 +220,8 @@ class Home extends Component {
             <Col xs={4} sm={8} lg={10}>                                                     
               <InputGroup>
                 <InputGroupAddon addonType="prepend">
-                  <Button color="info" style={{color: "white", zIndex: 0}} onClick={this.openFileBrowser.bind(this)}><i className="cui-file"></i> Browse&hellip;</Button>
-                  <input type="file" hidden onChange={this.fileHandler.bind(this)} ref={this.fileInput} onClick={(event)=> { event.target.value = null }} style={{"padding":"10px"}} />                                
+                  <Button color="info" style={{color: "white", zIndex: 0}} onClick={this.openFileBrowser.bind(this)  }><i className="cui-file"></i> Browse&hellip;</Button>
+                  <input type="file" hidden onChange={this.fileHandler.bind(this)} ref={this.fileInput} onClick={(event)=> { event.target.value = null  }} style={{"padding":"10px"}} />                                
                 </InputGroupAddon>
                 <Input type="text" className="form-control" value={this.state.uploadedFileName} readOnly invalid={this.state.isFormInvalid} />                                              
                 <FormFeedback>    
@@ -222,9 +240,11 @@ class Home extends Component {
               <OutTable data={this.state.rows} columns={this.state.cols} tableClassName="ExcelTable2007" tableHeaderRowClass="heading" />
           </Card>  
         </div>}
-        <Button color="info" style={{color: "white", zIndex: 0, margin:"auto",marginTop:"30px", display:"block"}} onClick={this.sqlupload.bind(this)} value={this.state.renderFile}><i className="cui-file"></i> Upload</Button>
+        <Button color="info" style={{color: "white", zIndex: 0, margin:"auto",marginTop:"30px", display:"block"}} onClick={this.sqlupload.bind(this) && this.handleSubmit} value={this.state.renderFile}><i className="cui-file"></i> Upload</Button>
+        
         </Container>
       </div>
+     
     );
   }
 }
