@@ -42,7 +42,7 @@ class Dashboard extends Component {
 <div>
           <ul class="menu">
  
-          <li name="abc"><a href="#">Log-Out </a></li>
+          <li name="abc"><a href="/#">Log-Out </a></li>
           
        
           

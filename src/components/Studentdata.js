@@ -18,7 +18,7 @@ class Studentdata extends Component {
         <ul class="menu">
  
  
-    <li><a href="#">Department</a>
+    <li><a href="/#">Department</a>
     <ul>
             <li><a href="#" class="documents">Information Technology</a></li>
             <li><a href="#" class="messages">Electronics</a></li>

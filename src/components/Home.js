@@ -21,12 +21,10 @@ class Home extends Component {
     this.openFileBrowser = this.openFileBrowser.bind(this);
     this.sqlupload = this.sqlupload.bind(this);
     this.renderFile = this.renderFile.bind(this);
-    this.openNewPage = this.openNewPage.bind(this);
     this.fileInput = React.createRef();
   }
 
   sqlupload = (event) => {
-
     this.setState({
       rows : event.target.value
     });
@@ -41,6 +39,14 @@ class Home extends Component {
     var elitegold = [];
     var successComp = [];
     var below40 = [];
+
+    for(i=0;i<50;i++){
+      elite[i]=0;
+      below40[i]=0;
+      successComp[i]=0;      
+      elitegold[i]=0;
+      elitesilver[i]=0;
+    }
 
     coursename[0]=this.state.rows[1][2];
     if(this.state.rows[i][14]==="Successfully completed"){
@@ -134,11 +140,36 @@ class Home extends Component {
     if(below40[i])
       below40sum=below40sum+below40[i];
   }
+
   console.log(coursename);
   console.log(elitegoldsum);
   console.log(successCompsum);
   console.log(elitesilversum);
+  console.log(elitegold);
+  console.log(successComp);
+  console.log(elitesilversum);
+  console.log(this.state.roll);
+  //    const data = { roll:this.state.roll,name:this.state.name , lastname:this.state.lastname }
+     
+      fetch('http://localhost:3000/send', { method: 'POST', 
   
+      body: JSON.stringify({rows:this.state.rows,coursename: coursename,
+        elite:elite,elitesum:elitesum,
+        elitegold:elitegold,elitegoldsum:elitegoldsum,
+        elitesilver:elitesilver,elitesilversum:elitesilversum,
+        successComp:successComp,successCompsum:successCompsum,
+        below40:below40,below40sum:below40sum}), // data can be `string` or {object}!
+  
+      headers:{ 'Content-Type': 'application/json' } })
+  
+      .then(res => res.json())
+  
+      .catch(error => console.error('Error:', error))
+  
+      .then(response => console.log('Success:', response));
+
+      window.location.href = "http://localhost:3001/dashboard";
+      event.preventDefault();   
 }
 
   renderFile = (fileObj) => {
@@ -190,28 +221,13 @@ class Home extends Component {
     this.fileInput.current.click();
   }
 
-  openNewPage = (chosenItem) => {
-    const url = chosenItem === "github" ? "https://github.com/ashishd751/react-excel-renderer" : "https://medium.com/@ashishd751/render-and-display-excel-sheets-on-webpage-using-react-js-af785a5db6a7";
-    window.open(url, '_blank');
-  }
-
-
-
   handleSubmit(event) {
-    
-        window.location.href = "http://localhost:3000/filter";
-   
-    event.preventDefault();
-  
-   
+    window.location.href = "http://localhost:3000/filter";
+    event.preventDefault();   
   }
   
-
-
-  render() {
-   
+  render() { 
     return (
-      
       <div style={{marginTop:"100px"}}>
         <Container>
         <form>
@@ -240,11 +256,10 @@ class Home extends Component {
               <OutTable data={this.state.rows} columns={this.state.cols} tableClassName="ExcelTable2007" tableHeaderRowClass="heading" />
           </Card>  
         </div>}
-        <Button color="info" style={{color: "white", zIndex: 0, margin:"auto",marginTop:"30px", display:"block"}} onClick={this.sqlupload.bind(this) && this.handleSubmit} value={this.state.renderFile}><i className="cui-file"></i> Upload</Button>
+        <Button color="info" style={{color: "white", zIndex: 0, margin:"auto",marginTop:"30px", display:"block"}} onClick={this.sqlupload.bind(this)} value={this.state.renderFile}><i className="cui-file"></i> Upload</Button>
         
         </Container>
       </div>
-     
     );
   }
 }

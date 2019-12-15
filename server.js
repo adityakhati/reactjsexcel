@@ -1,41 +1,116 @@
 var express = require('express');
 var mysql = require('mysql');
-var app = express();
+var app = express()
+const bodyParser = require('body-parser')
+app.use(bodyParser.json());
+app.use(function(req,res,next){
+ res.header('Access-Control-Allow-Origin', "*");
+ res.header('Access-Control-Allow-Methods','GET,PUT,POST,DELETE');
+ res.header('Access-Control-Allow-Headers', 'Content-Type');
+ next();
+});
+
 var connection = mysql.createConnection({
     host:'localhost',
+    port:3308,
     user:'root',
     password:'',
-    database:'sampledb'
+    database:'nptel'
 })
 connection.connect(function(error){
 
     if(!!error){
-        console.log('Error'); 
+        console.log(error); 
        } else{
-
         console.log('Connectd');
        }
 });
-app.get('/',function(req,resp){
-    var sql = "INSERT INTO mySampleTable VALUES ('3', 'Ashitosh','Jaswani')";
-connection.query(sql,function(error,rows,fields){
-    if(!!error){
-        console.log('Error in the query'); 
-       } else{
-        console.log('sucess');
-       }
-});
-});
+const port=5000;
 
-//route for insert data
-app.post('/',(req, res) => {
-    let data = {name: req.body.name, phone: req.body.phone, email: req.body.email, job: req.body.job, company: req.body.company, age: req.body.age, city: req.body.city};
-    let sql = "INSERT INTO user SET ?";
-    let query = connection.query(sql, data,(err, results) => {
-      if(err) throw err;
-      res.redirect('/');
-    });
+
+app.post('/send',(req, res) => {
+  console.log("In here");
+  //var data1=JSON.parse(req.body);
+  var i;					
+  console.log(req.body.rows.length);
+  console.log(req.body.coursename.length);
+  for(i=0;i<req.body.coursename.length;i++){
+
+    if(req.body.coursename[i]){
+     let data1={c_name:req.body.coursename[i],elite_performance:req.body.elite[i],
+       elitegold:req.body.elitegold[i],success_completed:req.body.successComp[i],below40:req.body.below40[i],	
+       elitesilver:req.body.elitesilver[i],year:'2019'};
+       console.log(data1);
+    let sql = "INSERT INTO analysis1 set ?";
+
+      let query2 = connection.query(sql, data1,(err, results) => {
+        if(!!err){
+          console.log(err); 
+        }        
+
+      });
+    }
+  }
+  let data = {roll: req.body.rows.roll, name: req.body.rows.name, lastname: req.body.rows.lastname};
+  for(i=1;i<1000;i++){
+    console.log(req.body.rows[i][0]);
+     if(!req.body.rows[i][0]){
+        break;
+      } 
+    
+  let data={course_id:req.body.rows[i][1],c_name:req.body.rows[i][2],roll_no:req.body.rows[i][3],name:req.body.rows[i][4],
+    email_id:req.body.rows[i][5],dob:req.body.rows[i][6],role:req.body.rows[i][7],department:req.body.rows[i][8]
+    ,year_of_passing:req.body.rows[i][9],clg_roll_no:req.body.rows[i][10],score_assign:req.body.rows[i][11],
+    exam_score:req.body.rows[i][12],final_score:req.body.rows[i][13],certificate_type:req.body.rows[i][14],
+    topper:req.body.rows[i][15],year:'2019'};
+  let sql1 = "INSERT INTO result set ?";
+  let query1 = connection.query(sql1, data,(err, results) => {
+    
   });
-  //applicationCache.addEventListener(1)
-app.listen(1337);
+}
 
+    				
+  console.log('in query3');
+
+    let data2={total_elite:req.body.elitesum,totalelitesilver:req.body.elitesilversum,
+      total_gold:req.body.elitegoldsum,total_success:req.body.successCompsum,
+      year:'2019',below40:req.body.below40sum};
+      console.log(req.body.elitesum);
+      					
+      let sql3 = "INSERT INTO totalanalysis set ?";
+      let query3 = connection.query(sql3, data2,(err, results) => {
+        if(!!err){
+          console.log(err); 
+         }
+      
+    });
+
+    res.redirect('http://localhost:3001/dashboard');
+   
+  });
+
+  
+app.get("/selectall",function(req,res){
+  connection.query("select * from totalanalysis",function(error,results){
+  if(error){
+      res.status(400).send('error in database operation');
+  }else{
+      console.log(results);
+      res.send({results:results});
+  }       
+  });
+});
+
+app.listen(3000);
+
+// app.get('/',function(req,resp){
+//     var sql = "INSERT INTO mySampleTable VALUES ('3', 'Ashitosh','Jaswani')";
+// connection.query(sql,function(error,rows,fields){
+//     if(!!error){
+//         console.log('Error in the query'); 
+//        } else{
+//         console.log('sucess');
+//        }
+// });
+// });
+//route for insert data
