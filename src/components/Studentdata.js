@@ -51,6 +51,9 @@ event.preventDefault();
           <li name=""><a href="http://localhost:3000/Dashboard">Dashboard</a></li>
  
           <li name="abc"><a href="http://localhost:3000/Home">Log-Out </a></li>
+          
+          <li name="abc"><a href="#">Excel-Download </a></li>
+          <li name="xyz"><a href="#">Go </a></li>
           </ul>
 
 <div class="row11">
@@ -82,7 +85,10 @@ event.preventDefault();
     <option value="TE">TE</option>
     <option value="BE">BE</option>
   </select>
+  
   </div>
+  <button class="button button2">Go</button>
+  
 </div><div class="col11">
 
 <h1></h1>
@@ -100,6 +106,8 @@ event.preventDefault();
     <option value="2024">2024</option>
   </select>
   </div>
+  <button class="button button2">Excel-Download</button>
+  
 </div>
 
     </div>
@@ -107,6 +115,7 @@ event.preventDefault();
     <button type="button" onClick={this.handleSubmit4}>Try it</button>
     </div>
     <p id="demo"></p>
+    
 
 
 
