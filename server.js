@@ -1,5 +1,6 @@
 var express = require('express');
 var mysql = require('mysql');
+const excel=require('exceljs');
 var app = express()
 const bodyParser = require('body-parser')
 app.use(bodyParser.json());
@@ -12,7 +13,7 @@ app.use(function(req,res,next){
 
 var connection = mysql.createConnection({
     host:'localhost',
-    port:3308,
+    port:3306,
     user:'root',
     password:'',
     database:'nptel'
@@ -72,9 +73,9 @@ app.post('/send',(req, res) => {
     				
   console.log('in query3');
 
-    let data2={total_elite:req.body.elitesum,totalelitesilver:req.body.elitesilversum,
-      total_gold:req.body.elitegoldsum,total_success:req.body.successCompsum,
-      year:'2019',below40:req.body.below40sum};
+    let data2={"total_elite":req.body.elitesum,"totalelitesilver":req.body.elitesilversum,
+      "total_gold":req.body.elitegoldsum,"total_success":req.body.successCompsum,
+      "year":'2019',"below40":req.body.below40sum};
       console.log(req.body.elitesum);
       					
       let sql3 = "INSERT INTO totalanalysis set ?";
@@ -88,13 +89,35 @@ app.post('/send',(req, res) => {
     res.redirect('http://localhost:3001/dashboard');
    
   });
+  app.get("/analysisreport",(req,res)=>{
+    res.download("\analysis.xlsx");
+});
 
   app.get("/selectall",function(req,res){
-    connection.query("select * from totalanalysis",function(error,results){
+    connection.query("select * from analysis1",function(error,results){
     if(error){
         res.status(400).send('error in database operation');
     }else{
         console.log(results);
+        let workbook = new excel.Workbook();
+        let worksheet = workbook.addWorksheet('Analysis');
+     
+     worksheet.columns = [
+       {header:'CourseName',key:'c_name',width:'40'},
+       {header:'Elite Performance',key:'elite_performance',width:'10'},
+       {header:'Elite Gold',key:'elitegold',width:'10'},
+       {header:'Elite Silver',key:'elitesilver',width:'10'},
+       {header:'Completed',key:'success_completed',width:'10'},
+       {header:'Below 40',key:'below40',width:'10'},
+       {header:'Year',key:'year',width:'10'}
+     ];
+     
+     worksheet.addRows(results);
+     workbook.xlsx.writeFile("analysis.xlsx")
+     .then(function () {
+         console.log("file saved!");
+     });
+     
         res.send({results:results});
     }       
     });
