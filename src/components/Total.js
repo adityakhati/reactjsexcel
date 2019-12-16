@@ -28,8 +28,6 @@ class Total extends Component {
         that.setState({elite:parseInt(that.state.students[0].total_elite),
          below40:parseInt(that.state.students[0].below40),elitesilver:parseInt(that.state.students[0].totalelitesilver),
          success:parseInt(that.state.students[0].total_success),elitegold:parseInt(that.state.students[0].total_gold)});
-
-
     }); 
    }
    

@@ -36,7 +36,6 @@ app.post('/send',(req, res) => {
   console.log(req.body.rows.length);
   console.log(req.body.coursename.length);
   for(i=0;i<req.body.coursename.length;i++){
-
     if(req.body.coursename[i]){
      let data1={c_name:req.body.coursename[i],elite_performance:req.body.elite[i],
        elitegold:req.body.elitegold[i],success_completed:req.body.successComp[i],below40:req.body.below40[i],	
@@ -125,6 +124,34 @@ app.post('/send',(req, res) => {
     
 app.get("/piedata",function(req,res){
   connection.query("select * from totalanalysis",function(error,results){
+  if(error){
+      res.status(400).send('error in database operation');
+  }else{
+      console.log(results);
+      res.send({results:results});
+  }       
+  });
+});
+app.post("/studentdata",function(req,res){
+  console.log("In here"); 
+  var sql5="select * from registration where 1";
+  console.log(req.body);
+  if(!req.body.null1){
+    sql5="select * from registration";
+  }
+  else{
+    if(req.body.dep!=='Select Department'){
+      sql5+=" and Branch=\'"+req.body.dep+"\'";    
+    }
+    if(req.body.class1!=='Select Class'){
+      sql5+=" and Class=\'"+req.body.class1+"\'";    
+    }    
+    if(req.body.year!=='Select Year'){
+      sql5+=" and Year=\'"+req.body.year+"\'";    
+    }  
+  }
+  console.log(sql5);
+  connection.query(sql5,function(error,results){
   if(error){
       res.status(400).send('error in database operation');
   }else{

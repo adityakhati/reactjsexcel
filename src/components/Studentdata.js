@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './filter.css';
 import './Studentdata.css';
 
 class Studentdata extends Component {
@@ -10,6 +9,7 @@ class Studentdata extends Component {
           function myFunction() {
             
           }
+          
          ]
       }
    }
@@ -17,8 +17,27 @@ class Studentdata extends Component {
 
    handleSubmit4(event) {
      
-    var x = document.getElementById("slct").value;
-            document.getElementById("demo").innerHTML = x;
+     var null1=1;
+     var dep = document.getElementById("dep").value;
+     var class1 = document.getElementById("category").value;
+     var year = document.getElementById("year").value;
+     if(dep==='Select Department' && class1==='Select Class' && year==='Select Year'){
+       null1=0;
+     }
+    fetch('http://localhost:3000/studentdata', { method: 'POST', 
+  
+    body: JSON.stringify({dep:dep,class1:class1,year:year,null1:null1}), // data can be `string` or {object}!
+
+    headers:{ 'Content-Type': 'application/json' } })
+
+    .then(res => res.json())
+
+    .catch(error => console.error('Error:', error))
+
+    .then(response => console.log('Success:', response));
+
+    
+//    document.getElementById("demo").innerHTML = x;
 
 event.preventDefault();
 }
@@ -34,15 +53,12 @@ event.preventDefault();
           <li name="abc"><a href="http://localhost:3000/Home">Log-Out </a></li>
           </ul>
 
-
-
-
 <div class="row11">
 <div class="col11">
 
 <h1></h1>
 <div class="select">
-  <select name="slct" id="slct">
+  <select name="slct" id="dep">
     <option selected disabled>Select Department</option>
     <option value="Information Technology">Information Technology</option>
     <option value="Electronics">Electronics</option>
@@ -59,30 +75,29 @@ event.preventDefault();
 
 <h1></h1>
 <div class="select">
-  <select name="slct" id="slct">
+  <select name="slct" id="category">
     <option selected disabled>Select Class</option>
-    <option value="1">Elite+Gold</option>
-    <option value="2">Elite+Silver</option>
-    <option value="3">Elite</option>
-    <option value="4">Successfully-Completed</option>
-    <option value="5">Below-40</option>
+    <option value="FE">FE</option>
+    <option value="SE">SE</option>
+    <option value="TE">TE</option>
+    <option value="BE">BE</option>
   </select>
   </div>
 </div><div class="col11">
 
 <h1></h1>
 <div class="select">
-  <select name="slct" id="slct">
+  <select name="slct" id="year">
     <option selected disabled>Select Year</option>
-    <option value="1">2016</option>
-    <option value="2">2017</option>
-    <option value="3">2018</option>
-    <option value="4">2019</option>
-    <option value="5">2020</option>
-    <option value="6">2021</option>
-    <option value="7">2022</option>
-    <option value="8">2023</option>
-    <option value="9">2024</option>
+    <option value="2016">2016</option>
+    <option value="2017">2017</option>
+    <option value="2018">2018</option>
+    <option value="2019">2019</option>
+    <option value="2020">2020</option>
+    <option value="2021">2021</option>
+    <option value="2022">2022</option>
+    <option value="2023">2023</option>
+    <option value="2024">2024</option>
   </select>
   </div>
 </div>

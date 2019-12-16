@@ -8,6 +8,8 @@
     outline: none;
     flex-wrap: wrap;
 }
+
+
  
 .menu {
     height: 80px;
@@ -74,8 +76,6 @@ li[name=cource]
     flex-wrap: wrap;
    
 }
-
-
 
 
 .menu li a {
