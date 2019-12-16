@@ -12,6 +12,7 @@ import Users from './components/Users';
 import Filter from './components/filter';
 import Dashboard from './components/Dashboard';
 import Studentdata from './components/Studentdata';
+import Total from './components/Total';
 
 class App extends Component {
   render() {
@@ -51,6 +52,9 @@ class App extends Component {
           </Route>
           <Route path="/studentdata">
           <Studentdata/>
+          </Route>
+          <Route path="/total">
+          <Total/>
           </Route>
       <Route path="/">
           <Users />

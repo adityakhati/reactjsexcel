@@ -34,6 +34,13 @@ class Dashboard extends Component {
   event.preventDefault();
   }
  
+  handleSubmit3(event) {
+     
+    window.location.href = "http://localhost:3000/total";
+
+event.preventDefault();
+}
+
      
      
      render() {
@@ -81,7 +88,7 @@ class Dashboard extends Component {
                 </div><div class="column">
                   <div class="box-2">
                     <div class="btn1 btn1-two">
-                      <span onClick={this.handleSubmit2}>Total-Analysis</span>
+                      <span onClick={this.handleSubmit3}>Total-Analysis</span>
                     </div>
                     </div>
                 </div>

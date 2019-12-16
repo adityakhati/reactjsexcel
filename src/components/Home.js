@@ -168,7 +168,7 @@ class Home extends Component {
   
       .then(response => console.log('Success:', response));
 
-      window.location.href = "http://localhost:3001/dashboard";
+      window.location.href = "http://localhost:3000/dashboard";
       event.preventDefault();   
 }
 
