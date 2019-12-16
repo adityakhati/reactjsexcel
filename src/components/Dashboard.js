@@ -43,7 +43,7 @@ class Dashboard extends Component {
           <ul class="menu">
           <li name=""><a href="http://localhost:3000/Dashboard">Dashboard</a></li>
  
-          <li name="abc"><a href="/#">Log-Out </a></li>
+          <li name="abc"><a href="#">Log-Out </a></li>
           
        
           
@@ -73,13 +73,35 @@ class Dashboard extends Component {
                 <div class="column">
                   <div class="box-2">
                     <div class="btn1 btn1-two">
-                      <span onClick={this.handleSubmit2}>Analyased-Data</span>
+                      <span onClick={this.handleSubmit2}>Analysed-Data</span>
+                    </div>
+                    </div>
+
+
+                </div><div class="column">
+                  <div class="box-2">
+                    <div class="btn1 btn1-two">
+                      <span onClick={this.handleSubmit2}>Total-Analysis</span>
                     </div>
                     </div>
                 </div>
 
+                
+
+
             </div>
-            </div>
+           
+
+
+
+            
+            
+        
+           
+
+
+
+  </div>
            )
            };
 }

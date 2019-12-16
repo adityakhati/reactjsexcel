@@ -32,24 +32,24 @@ class filter extends Component {
           <div>
         <ul class="menu">
  
-    <li name="cource"><a href="/#">Course Name
+    <li name="cource"><a href="#">Course Name
 </a></li>
-    <li><a href="/#">Department</a>
+    <li><a href="#">Department</a>
     <ul>
-            <li><a href="/#" class="documents">Information Technology</a></li>
-            <li><a href="/#" class="messages">Electronics</a></li>
-            <li><a href="/#" class="signout">Electronics and telecommunication</a></li>
-            <li><a href="/#" class="signout">Computer</a></li>
+            <li><a href="#" class="documents">Information Technology</a></li>
+            <li><a href="#" class="messages">Electronics</a></li>
+            <li><a href="#" class="signout">Electronics and telecommunication</a></li>
+            <li><a href="#" class="signout">Computer</a></li>
         </ul>
         </li>
-    <li><a href="/#">Certificate Type</a>
+    <li><a href="#">Certificate Type</a>
  
         <ul> 
-            <li><a href="/#" class="signout">Elite+gold</a></li>
-            <li><a href="/#" class="messages">Elite+silver</a></li>
-            <li><a href="/#" class="documents">Elite</a></li>
-            <li><a href="/#" class="messages">Successfully completed</a></li>
-            <li><a href="/#" class="messages">Below 40</a></li>
+            <li><a href="#" class="signout">Elite+gold</a></li>
+            <li><a href="#" class="messages">Elite+silver</a></li>
+            <li><a href="#" class="documents">Elite</a></li>
+            <li><a href="#" class="messages">Successfully completed</a></li>
+            <li><a href="#" class="messages">Below 40</a></li>
         </ul>
  
     </li>
