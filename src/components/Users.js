@@ -26,7 +26,7 @@ class Users extends Component {
 
     handleSubmit(event) {
         if(this.state.value==='kjsieit' && this.state.value1==='1234'){
-            window.location.href = "http://localhost:3000/user";
+            window.location.href = "http://localhost:3000/Dashboard";
        
         event.preventDefault();
         }else

@@ -41,6 +41,7 @@ class Dashboard extends Component {
 
 <div>
           <ul class="menu">
+          <li name=""><a href="http://localhost:3000/Dashboard">Dashboard</a></li>
  
           <li name="abc"><a href="/#">Log-Out </a></li>
           

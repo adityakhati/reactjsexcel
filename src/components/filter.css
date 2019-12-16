@@ -6,6 +6,7 @@
     padding: 0;
     border: none;
     outline: none;
+    flex-wrap: wrap;
 }
  
 .menu {
@@ -22,6 +23,7 @@
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+    flex-wrap: wrap;
 }
  
 .menu li {
@@ -32,6 +34,7 @@
     height: 40px;
     padding-top:20px;
     width:250px;
+    flex-wrap: wrap;
    
 }
 
@@ -42,7 +45,8 @@ li[name=xyz]  {
     display: block;
     height: 40px;
     padding-top:20px;
-    width:100px;
+    width:90px;
+    flex-wrap: wrap;
    
 }
 li[name=abc]  {
@@ -53,6 +57,7 @@ li[name=abc]  {
     height: 40px;
     padding-top:20px;
     width:150px;
+    flex-wrap: wrap;
    
 }
 
@@ -66,6 +71,7 @@ li[name=cource]
     width:450px;
     padding-top:20px;
    
+    flex-wrap: wrap;
    
 }
 
@@ -94,6 +100,7 @@ li[name=cource]
     -o-transition: color .2s ease-in-out;
     -ms-transition: color .2s ease-in-out;
     transition: color .2s ease-in-out;
+    flex-wrap: wrap;
 }
  
 .menu li:first-child a { border-left: none; }

@@ -29,15 +29,13 @@ class App extends Component {
     // </Router>
     <Router>
     <div>
-        { <nav>
+        {/* { <nav>
           <ul>
-
-            
-            <li>
+            { <li>
               <Link to="/dashboard">Dashboard</Link>
-            </li>
+            </li> }
           </ul>
-        </nav> }
+        </nav> } */}
 
       {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}

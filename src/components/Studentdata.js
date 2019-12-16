@@ -18,7 +18,7 @@ class Studentdata extends Component {
         <ul class="menu">
  
  
-    <li><a href="/#">Department</a>
+    <li><a href="http://localhost:3000/Studentdata">Department</a>
     <ul>
             <li><a href="#" class="documents">Information Technology</a></li>
             <li><a href="#" class="messages">Electronics</a></li>
@@ -49,11 +49,13 @@ class Studentdata extends Component {
             <li><a href="#" class="messages">2024</a></li>
         </ul>
         </li>
+        <li name="abc"><a href="http://localhost:3000/Home">Log-Out</a></li>
         
             <li name="abc"><a href="#">Excel-Download</a></li>
  
     
         <li name="xyz"><a href="#">Go</a></li>
+        
 </ul> 
       )
    }

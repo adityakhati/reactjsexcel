@@ -228,7 +228,18 @@ class Home extends Component {
   
   render() { 
     return (
+<div>
+      <ul class="menu">
+      <li name=""><a href="http://localhost:3000/Dashboard">Dashboard</a></li>
+
+      <li name="abc"><a href="/#">Log-Out </a></li>
+      
+   
+      
+   
+  </ul> 
       <div style={{marginTop:"100px"}}>
+        
         <Container>
         <form>
           <FormGroup row>
@@ -259,6 +270,7 @@ class Home extends Component {
         <Button color="info" style={{color: "white", zIndex: 0, margin:"auto",marginTop:"30px", display:"block"}} onClick={this.sqlupload.bind(this)} value={this.state.renderFile}><i className="cui-file"></i> Upload</Button>
         
         </Container>
+      </div>
       </div>
     );
   }

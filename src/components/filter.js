@@ -66,16 +66,15 @@ class filter extends Component {
         </ul>
         </li>
 
+        <li name="xyz"><a href="http://localhost:3000/Home">Log-Out</a></li>
         <li name="abc"><a href="#">Excel-Download</a></li>
+        
               <li name="xyz"><a href="#">GO</a></li>
+              
 
 </ul> 
-{this.state.dataLoaded && 
-        <div>
-          <Card body outline color="secondary" className="restrict-card">
-              <OutTable data={this.state.students} columns={this.state.cols} tableClassName="ExcelTable2007" tableHeaderRowClass="heading" />
-          </Card>  
-        </div>}
+
+
        
 </div>
       )
