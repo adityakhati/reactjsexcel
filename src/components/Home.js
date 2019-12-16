@@ -222,7 +222,7 @@ class Home extends Component {
   }
 
   handleSubmit(event) {
-    window.location.href = "http://localhost:3000/filter";
+    window.location.href = "http://localhost:3001/filter";
     event.preventDefault();   
   }
   
@@ -230,7 +230,7 @@ class Home extends Component {
     return (
 <div>
       <ul class="menu">
-      <li name=""><a href="http://localhost:3000/Dashboard">Dashboard</a></li>
+      <li name=""><a href="http://localhost:3001/Dashboard">Dashboard</a></li>
 
       <li name="abc"><a href="/#">Log-Out </a></li>
       

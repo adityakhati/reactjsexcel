@@ -66,7 +66,7 @@ class filter extends Component {
         </ul>
         </li>
 
-        <li name="xyz"><a href="http://localhost:3000/Home">Log-Out</a></li>
+        <li name="xyz"><a href="http://localhost:3001/Home">Log-Out</a></li>
         <li name="abc"><a href="#">Excel-Download</a></li>
         
               <li name="xyz"><a href="#">GO</a></li>

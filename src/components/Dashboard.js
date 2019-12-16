@@ -15,28 +15,28 @@ class Dashboard extends Component {
      
      handleSubmit(event) {
      
-          window.location.href = "http://localhost:3000/user";
+          window.location.href = "http://localhost:3001/user";
      
       event.preventDefault();
       }
 
       handleSubmit1(event) {
      
-        window.location.href = "http://localhost:3000/Studentdata";
+        window.location.href = "http://localhost:3001/Studentdata";
    
     event.preventDefault();
     }
    
     handleSubmit2(event) {
      
-      window.location.href = "http://localhost:3000/filter";
+      window.location.href = "http://localhost:3001/filter";
  
   event.preventDefault();
   }
  
   handleSubmit3(event) {
      
-    window.location.href = "http://localhost:3000/total";
+    window.location.href = "http://localhost:3001/total";
 
 event.preventDefault();
 }
@@ -48,7 +48,7 @@ event.preventDefault();
 
 <div>
           <ul class="menu">
-          <li name=""><a href="http://localhost:3000/Dashboard">Dashboard</a></li>
+          <li name=""><a href="http://localhost:3001/Dashboard">Dashboard</a></li>
  
           <li name="abc"><a href="#">Log-Out </a></li>
           

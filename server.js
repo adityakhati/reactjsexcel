@@ -89,8 +89,18 @@ app.post('/send',(req, res) => {
    
   });
 
-  
-app.get("/selectall",function(req,res){
+  app.get("/selectall",function(req,res){
+    connection.query("select * from totalanalysis",function(error,results){
+    if(error){
+        res.status(400).send('error in database operation');
+    }else{
+        console.log(results);
+        res.send({results:results});
+    }       
+    });
+  });
+    
+app.get("/piedata",function(req,res){
   connection.query("select * from totalanalysis",function(error,results){
   if(error){
       res.status(400).send('error in database operation');
