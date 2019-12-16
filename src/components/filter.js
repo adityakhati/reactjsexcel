@@ -42,6 +42,29 @@ class filter extends Component {
       }
    }
 
+   handleSubmitfilter(event) {
+
+    var null1=1;
+    var class1 = document.getElementById("certificate").value;
+    var year = document.getElementById("year").value;
+    if(class1==='Certificate-Type' && year==='Select Year'){
+      null1=0;
+    }
+    const that = this;
+
+   fetch('http://localhost:3000/filterdata', { method: 'POST', 
+ 
+   body: JSON.stringify({class1:class1,year:year,null1:null1}), // data can be `string` or {object}!
+
+   headers:{ 'Content-Type': 'application/json' } })
+   .then(res => res.json())
+   .catch(error => console.error('Error:', error))
+   .then(response => console.log('Success:', response));
+
+
+   event.preventDefault();
+   }
+
    componentDidMount() {
     const that = this;
 
@@ -88,73 +111,54 @@ class filter extends Component {
       return (
           <div class="aditya">
         <ul class="menu">
-          <li name=""><a href="http://localhost:3000/Dashboard">Dashboard</a></li>
+          <li name=""><a href="http://localhost:3001/Dashboard">Dashboard</a></li>
  
-          <li name="abc"><a href="http://localhost:3000/Home">Log-Out </a></li>
-          
-          
-         
-              
-
+          <li name="abc"><a href="http://localhost:3001/Home">Log-Out </a></li>
 </ul> 
 <div class="row11">
 <div class="col11">
 
-<h1></h1>
-<div class="select">
-  <select name="slct" id="slct">
-    <option selected disabled>Select Department</option>
-    <option value="Information Technology">Information Technology</option>
-    <option value="Electronics">Electronics</option>
-    <option value="Electronics and Telecommunication">Electronics and Telecommunication</option>
-    <option value="Computer">Computer</option>
-  </select>
-  </div>
  
 
 </div>
-
 
 <div class="col11">
 
 <h1></h1>
 <div class="select">
-  <select name="slct" id="slct">
-    <option selected disabled>Certificate-Type</option>
-    <option value="1">Elite+Gold</option>
-    <option value="2">Elite+Silver</option>
-    <option value="3">Elite</option>
-    <option value="4">Successfully-Completed</option>
-    <option value="5">Below-40</option>
+  <select name="slct" id="certificate">
+    <option selected>Certificate-Type</option>
+    <option value="elitegold">Elite+Gold</option>
+    <option value="elitesilver">Elite+Silver</option>
+    <option value="elite_performance">Elite</option>
+    <option value="success_completed">Successfully-Completed</option>
+    <option value="below40">Below-40</option>
   </select>
   
   </div>
-  <button class="button button2">Go</button>
+  <button class="button button2" onClick={this.handleSubmitfilter}>Go</button>
   
 </div><div class="col11">
 
 <h1></h1>
 <div class="select">
-  <select name="slct" id="slct">
-    <option selected disabled>Select Year</option>
-    <option value="1">2016</option>
-    <option value="2">2017</option>
-    <option value="3">2018</option>
-    <option value="4">2019</option>
-    <option value="5">2020</option>
-    <option value="6">2021</option>
-    <option value="7">2022</option>
-    <option value="8">2023</option>
-    <option value="9">2024</option>
+<select name="slct" id="year">
+    <option selected>Select Year</option>
+    <option value="2016">2016</option>
+    <option value="2017">2017</option>
+    <option value="2018">2018</option>
+    <option value="2019">2019</option>
+    <option value="2020">2020</option>
+    <option value="2021">2021</option>
+    <option value="2022">2022</option>
+    <option value="2023">2023</option>
+    <option value="2024">2024</option>
   </select>
-  </div>
+ </div>
   <button class="button button2">Excel-Download</button>
   
 </div>
 
-    </div>
-    <div>
-    <button type="button" onClick={this.handleSubmit4}>Try it</button>
     </div>
     <p id="demo"></p>
 <BootstrapTable wrapperClasses="boo" keyField="total_elite" data={this.state.updatestud} columns={this.state.columns} />

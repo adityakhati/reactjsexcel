@@ -97,7 +97,7 @@ app.post('/send',(req, res) => {
     if(error){
         res.status(400).send('error in database operation');
     }else{
-        console.log(results);
+
         let workbook = new excel.Workbook();
         let worksheet = workbook.addWorksheet('Analysis');
      
@@ -132,6 +132,34 @@ app.get("/piedata",function(req,res){
   }       
   });
 });
+
+app.post("/filterdata",function(req,res){
+  console.log("In here"); 
+  var sql5="select * analysis1 from  where 1";
+  console.log(req.body);
+  if(!req.body.null1){
+    sql5="select * from analysis1";
+  }
+  else{
+    if(req.body.class1!=='Certificate-Type'){
+      sql5="select c_name,"+req.body.class1+" from  analysis1 where 1"
+    }
+
+    if(req.body.year!=='Select Year'){
+      sql5+=" and Year=\'"+req.body.year+"\'";    
+    }  
+  }
+  console.log(sql5);
+  connection.query(sql5,function(error,results){
+  if(error){
+      res.status(400).send('error in database operation');
+  }else{
+      console.log(results);
+      res.send({results:results});
+  }       
+  });
+});
+
 app.post("/studentdata",function(req,res){
   console.log("In here"); 
   var sql5="select * from registration where 1";

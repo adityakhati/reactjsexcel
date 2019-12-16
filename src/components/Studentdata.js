@@ -29,18 +29,12 @@ class Studentdata extends Component {
     body: JSON.stringify({dep:dep,class1:class1,year:year,null1:null1}), // data can be `string` or {object}!
 
     headers:{ 'Content-Type': 'application/json' } })
-
     .then(res => res.json())
-
     .catch(error => console.error('Error:', error))
-
     .then(response => console.log('Success:', response));
 
-    
-//    document.getElementById("demo").innerHTML = x;
-
-event.preventDefault();
-}
+    event.preventDefault();
+    }
    
 
    render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
@@ -62,7 +56,7 @@ event.preventDefault();
 <h1></h1>
 <div class="select">
   <select name="slct" id="dep">
-    <option selected disabled>Select Department</option>
+    <option selected>Select Department</option>
     <option value="Information Technology">Information Technology</option>
     <option value="Electronics">Electronics</option>
     <option value="Electronics and Telecommunication">Electronics and Telecommunication</option>
@@ -79,7 +73,7 @@ event.preventDefault();
 <h1></h1>
 <div class="select">
   <select name="slct" id="category">
-    <option selected disabled>Select Class</option>
+    <option selected >Select Class</option>
     <option value="FE">FE</option>
     <option value="SE">SE</option>
     <option value="TE">TE</option>
@@ -87,14 +81,14 @@ event.preventDefault();
   </select>
   
   </div>
-  <button class="button button2">Go</button>
+  <button class="button button2" onClick={this.handleSubmit4}>Go</button>
   
 </div><div class="col11">
 
 <h1></h1>
 <div class="select">
   <select name="slct" id="year">
-    <option selected disabled>Select Year</option>
+    <option selected>Select Year</option>
     <option value="2016">2016</option>
     <option value="2017">2017</option>
     <option value="2018">2018</option>
@@ -109,16 +103,8 @@ event.preventDefault();
   <button class="button button2">Excel-Download</button>
   
 </div>
-
-    </div>
-    <div>
-    <button type="button" onClick={this.handleSubmit4}>Try it</button>
     </div>
     <p id="demo"></p>
-    
-
-
-
 </div>
       )
    }
