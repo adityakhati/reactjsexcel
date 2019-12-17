@@ -43,7 +43,28 @@ class Total extends Component {
  
           <li name="abc"><a href="#">Log-Out </a></li>   
        
-      </ul>    
+      </ul>  
+      <h1>
+
+      </h1>
+      <div class="select" style={{paddingleft:"50px"}}>
+      
+<select name="slct" id="year">
+    <option selected>Select Year</option>
+    <option value="2016">2016</option>
+    <option value="2017">2017</option>
+    <option value="2018">2018</option>
+    <option value="2019">2019</option>
+    <option value="2020">2020</option>
+    <option value="2021">2021</option>
+    <option value="2022">2022</option>
+    <option value="2023">2023</option>
+    <option value="2024">2024</option>
+  </select>
+ </div>
+
+ <button class="button button2" style={{float:"right",paddingright:25}} onClick={this.handleSubmit4}>Go</button>
+
       <div className="div1">
 <button class="button">Elite</button>
 <button class="button button2">EliteSilver </button>
@@ -53,6 +74,9 @@ class Total extends Component {
 
 
 </div>
+
+
+
 
       <div> 
       <ReactMinimalPieChart
