@@ -42,12 +42,11 @@ class Studentdata extends Component {
           <div>
           
           <ul class="menu">
-          <li name=""><a href="http://localhost:3000/Dashboard">Dashboard</a></li>
+          <li name=""><a href="http://localhost:3001/Dashboard">Dashboard</a></li>
  
-          <li name="abc"><a href="http://localhost:3000/Home">Log-Out </a></li>
+          <li name="abc"><a href="http://localhost:3001/Home">Log-Out </a></li>
           
-          <li name="abc"><a href="#">Excel-Download </a></li>
-          <li name="xyz"><a href="#">Go </a></li>
+         
           </ul>
 
 <div class="row11">
