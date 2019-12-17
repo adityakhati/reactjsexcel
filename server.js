@@ -92,6 +92,44 @@ app.post('/send',(req, res) => {
     res.download("\analysis.xlsx");
 });
 
+app.get("/downstd",(req,res)=>{
+  res.download("\anlaysis1.xlsx");
+})
+app.get("/selectstd",function(req,res){
+  connection.query("select * from registration",function(error,results){
+    if(error){
+      res.status(400).send('error in database operation');
+    }else{
+      let workbook = new excel.Workbook();
+      let worksheet = workbook.addWorksheet('Analysis');
+   
+   worksheet.columns = [
+    {header:'Name',key:'Name',width:'20'},
+    {header:'Lastname',key:'Lastname',width:'10'},
+    {header:'DOB',key:'DOB',width:'10'},
+    {header:'Rollno',key:'Rollno',width:'10'},
+    {header:'Caste',key:'Caste',width:'10'},
+    {header:'Gender',key:'Gender',width:'10'},
+    {header:'Email',key:'Email',width:'30'},
+    {header:'Phone',key:'Phone',width:'20'},
+    {header:'Year',key:'Year',width:'10'},
+    {header:'Branch',key:'Branch',width:'10'},
+    {header:'StudentFaculty',key:'StudentFaculty',width:'15'},
+    {header:'Coursename',key:'Coursename',width:'20'},
+    
+   ];
+   
+   worksheet.addRows(results);
+   workbook.xlsx.writeFile("anlaysis1.xlsx")
+   .then(function () {
+       console.log("file saved!");
+   });
+   
+      res.send({results:results});
+  }       
+    
+  })
+})
   app.get("/selectall",function(req,res){
     connection.query("select * from analysis1",function(error,results){
     if(error){

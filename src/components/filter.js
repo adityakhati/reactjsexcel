@@ -155,7 +155,7 @@ class filter extends Component {
     <option value="2024">2024</option>
   </select>
  </div>
-  <button class="button button2">Excel-Download</button>
+  <button class="button button2" onClick={this.download}>Excel-Download</button>
   
 </div>
 
