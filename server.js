@@ -171,9 +171,30 @@ app.get("/piedata",function(req,res){
   });
 });
 
+
+app.post("/piedatayear",function(req,res){
+  var sql4="select * from totalanalysis where 1";
+  if(!req.body.null1){
+    sql4="select * from totalanalysis";
+  }
+  else{
+    if(req.body.year!=='Select Year'){
+      sql4+=" and Year=\'"+req.body.year+"\'";    
+    }
+  }
+  connection.query(sql4,function(error,results){
+  if(error){
+      res.status(400).send('error in database operation');
+  }else{
+      console.log(results);
+      res.send({results:results});
+  }       
+  });
+});
+
 app.post("/filterdata",function(req,res){
   console.log("In here"); 
-  var sql5="select * analysis1 from  where 1";
+  var sql5="select * from analysis1 where 1";
   console.log(req.body);
   if(!req.body.null1){
     sql5="select * from analysis1";
@@ -184,7 +205,7 @@ app.post("/filterdata",function(req,res){
     }
 
     if(req.body.year!=='Select Year'){
-      sql5+=" and Year=\'"+req.body.year+"\'";    
+      sql5+=" and year=\'"+req.body.year+"\'";    
     }  
   }
   console.log(sql5);
@@ -192,6 +213,30 @@ app.post("/filterdata",function(req,res){
   if(error){
       res.status(400).send('error in database operation');
   }else{
+    let workbook = new excel.Workbook();
+        let worksheet = workbook.addWorksheet('Analysis');
+     if(req.body.year!=='Select Year'){
+     worksheet.columns = [
+       {header:'CourseName',key:'c_name',width:'40'},
+       {header:req.body.class1 ,key:req.body.class1,width:'10'},
+       {header:'Year',key:'year',width:'10'}
+     ];}
+     else{
+      worksheet.columns = [
+        {header:'CourseName',key:'c_name',width:'40'},
+        {header:'Elite Performance',key:'elite_performance',width:'10'},
+        {header:'Elite Gold',key:'elitegold',width:'10'},
+        {header:'Elite Silver',key:'elitesilver',width:'10'},
+        {header:'Completed',key:'success_completed',width:'10'},
+        {header:'Below 40',key:'below40',width:'10'},
+        {header:'Year',key:'year',width:'10'}
+      ];
+      
+     }
+     
+     worksheet.addRows(results);
+     workbook.xlsx.writeFile("analysis.xlsx")
+     
       console.log(results);
       res.send({results:results});
   }       
@@ -221,6 +266,34 @@ app.post("/studentdata",function(req,res){
   if(error){
       res.status(400).send('error in database operation');
   }else{
+
+    let workbook = new excel.Workbook();
+    let worksheet = workbook.addWorksheet('Analysis');
+ 
+ worksheet.columns = [
+  {header:'Name',key:'Name',width:'20'},
+  {header:'Lastname',key:'Lastname',width:'10'},
+  {header:'DOB',key:'DOB',width:'10'},
+  {header:'Rollno',key:'Rollno',width:'10'},
+  {header:'Caste',key:'Caste',width:'10'},
+  {header:'Gender',key:'Gender',width:'10'},
+  {header:'Email',key:'Email',width:'30'},
+  {header:'Phone',key:'Phone',width:'20'},
+  {header:'Year',key:'Year',width:'10'},
+  {header:'Branch',key:'Branch',width:'10'},
+  {header:'StudentFaculty',key:'StudentFaculty',width:'15'},
+  {header:'Coursename',key:'Coursename',width:'20'},
+  
+ ];
+ 
+ worksheet.addRows(results);
+ workbook.xlsx.writeFile("anlaysis1.xlsx")
+ .then(function () {
+     console.log("file saved!");
+ });
+ 
+
+      
       console.log(results);
       res.send({results:results});
   }       

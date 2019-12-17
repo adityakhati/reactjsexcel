@@ -40,6 +40,8 @@ class filter extends Component {
         }]
       
       }
+      this.handleSubmitfilter = this.handleSubmitfilter.bind(this);
+
    }
 
    handleSubmitfilter(event) {
@@ -58,8 +60,9 @@ class filter extends Component {
 
    headers:{ 'Content-Type': 'application/json' } })
    .then(res => res.json())
-   .catch(error => console.error('Error:', error))
-   .then(response => console.log('Success:', response));
+   .then(function (body) {
+    that.setState({updatestud:Object.values(body.results)})
+  });
 
 
    event.preventDefault();
@@ -140,7 +143,7 @@ class filter extends Component {
   
 </div><div class="col11">
 
-<h1></h1>
+ 
 <div class="select">
 <select name="slct" id="year">
     <option selected>Select Year</option>

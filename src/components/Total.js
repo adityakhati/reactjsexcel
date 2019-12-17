@@ -15,6 +15,8 @@ class Total extends Component {
          success:0,
          below40:0
       }
+      this.handleSubmit8 = this.handleSubmit8.bind(this);
+
    }
 
    componentDidMount(){
@@ -29,10 +31,47 @@ class Total extends Component {
         that.setState({elite:parseInt(that.state.students[0].total_elite),
          below40:parseInt(that.state.students[0].below40),elitesilver:parseInt(that.state.students[0].totalelitesilver),
          success:parseInt(that.state.students[0].total_success),elitegold:parseInt(that.state.students[0].total_gold)});
-
-
     }); 
    }
+
+   handleSubmit8(event) {
+
+    var null1 = 1;
+    const that=this;
+    var year = document.getElementById("year").value;
+    if (year === 'Select Year') {
+      null1 = 0;
+    }
+    fetch('http://localhost:3000/piedatayear', {
+      method: 'POST',
+
+      body: JSON.stringify({year: year, null1: null1 }), // data can be `string` or {object}!
+
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(res => res.json())
+      .then(function(body){
+        console.log(body.results);
+        if(body.results.length>0){
+        that.setState({students:Object.values(body.results)});
+        that.setState({elite:parseInt(that.state.students[0].total_elite),
+         below40:parseInt(that.state.students[0].below40),elitesilver:parseInt(that.state.students[0].totalelitesilver),
+         success:parseInt(that.state.students[0].total_success),elitegold:parseInt(that.state.students[0].total_gold)});
+        }
+        else{
+          that.setState({
+            elite: 0,
+            elitegold:0,
+            elitesilver:0,
+            success:0,
+            below40:0  
+        });
+        }
+    }); 
+
+    event.preventDefault();
+  }
+
    
 
    render() { //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
@@ -63,7 +102,7 @@ class Total extends Component {
   </select>
  </div>
 
- <button class="button button2" style={{float:"right",paddingright:25}} onClick={this.handleSubmit4}>Go</button>
+ <button class="button button2" style={{float:"right",paddingright:25}} onClick={this.handleSubmit8}>Go</button>
 
       <div className="div1">
 <button class="button">Elite</button>
@@ -74,10 +113,6 @@ class Total extends Component {
 
 
 </div>
-
-
-
-
       <div> 
       <ReactMinimalPieChart
   animate={true}
