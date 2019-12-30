@@ -5,6 +5,9 @@ import './filter.css';
 class filter extends Component {
    constructor(props) {
       super(props) //since we are extending class Table so we have to use super in order to override Component class constructor
+      if(window.localStorage.getItem("logged") !== "yes"){
+        window.location.href = "http://localhost:3001/";
+      }
       this.state = { //state is by default an object
         dataLoaded:false,
          students: [
@@ -125,7 +128,7 @@ class filter extends Component {
 
 </div>
 
-<div class="col11">
+<div class="col11" style={{marginLeft:"300px", float:"center"}}>
 
 <h1></h1>
 <div class="select">
@@ -139,14 +142,15 @@ class filter extends Component {
   </select>
   
   </div>
-  <button class="button button2" onClick={this.handleSubmitfilter}>Go</button>
+  <button class="button button2"style={{marginLeft:"96px", float:"center"}} onClick={this.handleSubmitfilter}>Go</button>
   
 </div><div class="col11">
 
- 
+<h1></h1>
 <div class="select">
 <select name="slct" id="year">
     <option selected>Select Year</option>
+    <option value="2015">2015</option>
     <option value="2016">2016</option>
     <option value="2017">2017</option>
     <option value="2018">2018</option>
@@ -158,14 +162,15 @@ class filter extends Component {
     <option value="2024">2024</option>
   </select>
  </div>
-  <button class="button button2" onClick={this.download}>Excel-Download</button>
+  <button class="button button2"style={{marginLeft:"80px", float:"center"}} onClick={this.download}>Excel-Download</button>
   
 </div>
 
     </div>
     <p id="demo"></p>
+    <div class="center-col">
 <BootstrapTable wrapperClasses="boo" keyField="total_elite" data={this.state.updatestud} columns={this.state.columns} />
-
+</div>
        
 </div>
       )

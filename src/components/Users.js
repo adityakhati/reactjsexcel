@@ -5,6 +5,7 @@ import './Users.css';
 class Users extends Component {
 
     constructor(props) {
+        window.localStorage.setItem("logged","no");
         super(props);
         this.state = {value: '',
                        value1: ''};
@@ -23,9 +24,9 @@ class Users extends Component {
        
        
        }
-
     handleSubmit(event) {
         if(this.state.value==='kjsieit' && this.state.value1==='1234'){
+            window.localStorage.setItem("logged","yes");
             window.location.href = "http://localhost:3001/Dashboard";
        
         event.preventDefault();

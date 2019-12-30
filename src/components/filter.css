@@ -77,7 +77,10 @@ li[name=cource]
    
 }
 
-
+.center-col{
+    max-height: 450px;
+    overflow-y: scroll;
+  }
 .menu li a {
     display: block;
     padding: 0 14px;

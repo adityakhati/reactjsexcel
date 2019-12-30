@@ -2,10 +2,15 @@ import React, { Component } from 'react'
 import './Dashboard.css';
 
 
+
 class Dashboard extends Component {
 
     constructor(props) {
         super(props) //since we are extending class Table so we have to use super in order to override Component class constructor
+        console.log(window.localStorage.getItem("logged"));
+        if(window.localStorage.getItem("logged") !== "yes"){
+          window.location.href = "http://localhost:3001/";
+        }
         this.state = { //state is by default an object
            students: [
              

@@ -1,5 +1,5 @@
-.button {
-  background-color: #4CAF50; /* Green */
+.button { 
+  background-color: #5197e6;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -9,13 +9,19 @@
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  border-radius: 10px;
   
 }
+.button1 {
+  background-color: #4ff7d0; /* Green */}
 
 .button2 {background-color: #008CBA;} /* Blue */
-.button3 {background-color: #f44336;} /* Red */ 
-.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
-.button5 {background-color: #555555;} /* Black */
+
+.button6 {background-color: #87ed18;} /* Blue */
+.button3 {background-color: #e93df2;} /* Red */ 
+.button4 {background-color: #f28c0f; color: black;} /* Gray */ 
+.button5 {background-color: #cf3d36;} /* Black */
 .div1{
     padding-left: 10cm;
 }
+

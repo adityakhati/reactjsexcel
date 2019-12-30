@@ -62,6 +62,7 @@ select {
 }
 .col11 {
   float: left;
+  padding-left: 75px;
   width: 33.33%;
   flex-wrap: wrap;
   justify-content: center;
@@ -73,6 +74,11 @@ select {
   display: table;
   clear: both;
   
+  
+}
+.center-col{
+  max-height: 450px;
+  overflow-y: scroll;
 }
 .button {
   background-color: #4CAF50; /* Green */

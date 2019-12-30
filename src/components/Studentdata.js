@@ -5,6 +5,9 @@ import BootstrapTable from 'react-bootstrap-table-next';
 class Studentdata extends Component {
   constructor(props) {
     super(props) //since we are extending class Table so we have to use super in order to override Component class constructor
+    if(window.localStorage.getItem("logged") !== "yes"){
+      window.location.href = "http://localhost:3001/";
+    }
     this.state = { //state is by default an object
       students: [],
       columns: [
@@ -130,16 +133,15 @@ class Studentdata extends Component {
       <div>
 
         <ul class="menu">
-          <li name=""><a href="http://localhost:3000/Dashboard">Dashboard</a></li>
+          <li name=""><a href="http://localhost:3001/Dashboard">Dashboard</a></li>
 
-          <li name="abc"><a href="http://localhost:3000/Home">Log-Out </a></li>
+          <li name="abc"><a href="http://localhost:3001/Home">Log-Out </a></li>
 
-          <li name="abc"><a href="#">Excel-Download </a></li>
-          <li name="xyz"><a href="#">Go </a></li>
+          
         </ul>
 
         <div class="row11">
-          <div class="col11">
+          <div class="col11" >
 
             <h1></h1>
             <div class="select">
@@ -173,6 +175,7 @@ class Studentdata extends Component {
             <div class="select">
               <select name="slct" id="year">
                 <option selected>Select Year</option>
+                <option value="2015">2015</option>
                 <option value="2016">2016</option>
                 <option value="2017">2017</option>
                 <option value="2018">2018</option>
@@ -189,8 +192,9 @@ class Studentdata extends Component {
           </div>
         </div>
         <p id="demo"></p>
+        <div class="center-col">
         <BootstrapTable wrapperClasses="boo" keyField="Name" data={this.state.students} columns={this.state.columns} />
-
+      </div>
       </div>
     )
   }

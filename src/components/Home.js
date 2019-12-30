@@ -9,6 +9,9 @@ class Home extends Component {
 
   constructor(props){
     super(props);
+    if(window.localStorage.getItem("logged") !== "yes"){
+      window.location.href = "http://localhost:3001/";
+    }
     this.state={
       isOpen: false,
       dataLoaded: false,
@@ -33,6 +36,7 @@ class Home extends Component {
     console.log(this.state.rows.length);
     var i=1,k=0;
     var n=this.state.rows.length;
+    var year = '20'.concat(this.state.rows[2][3].substring(5, 7));
     var coursename=[];
     var elite = [];
     var elitesilver = [];
@@ -49,35 +53,36 @@ class Home extends Component {
     }
 
     coursename[0]=this.state.rows[1][2];
-    if(this.state.rows[i][14]==="Successfully completed"){
+    console.log(this.state.rows[1][14]);
+    if(this.state.rows[1][14]==="Successfully completed"){
       console.log("suceessfully completed");
       if(!successComp[k]){
           successComp[k]=0;
       }
       successComp[k]++;
     }
-    else if(this.state.rows[i][14]==="Elite+Silver"){
+    else if(this.state.rows[1][14]==="Elite+Silver"){
       console.log("Ellitesilver");
       if(!elitesilver[k]){
         elitesilver[k]=0;
     }
       elitesilver[k]++;
     }
-    else if(this.state.rows[i][14]==="Elite"){
+    else if(this.state.rows[1][14]==="Elite"){
       console.log("Ellite");
       if(!elite[k]){
         elite[k]=0;
     }
       elite[k]++;
     }
-    else if(this.state.rows[i][14]==="Elite+gold"){
+    else if(this.state.rows[1][14]==="Elite+gold"){
       console.log("Ellitegold");
       if(!elitegold[k]){
         elitegold[k]=0;
     }
       elitegold[k]++;
     }
-    else if(this.state.rows[i][14]==="No Certificate"){
+    else if(this.state.rows[1][14]==="No Certificate"){
       console.log("No certificate");
       if(!below40[k]){
         below40[k]=0;
@@ -158,7 +163,7 @@ class Home extends Component {
         elitegold:elitegold,elitegoldsum:elitegoldsum,
         elitesilver:elitesilver,elitesilversum:elitesilversum,
         successComp:successComp,successCompsum:successCompsum,
-        below40:below40,below40sum:below40sum}), // data can be `string` or {object}!
+        below40:below40,below40sum:below40sum,year:year}), // data can be `string` or {object}!
   
       headers:{ 'Content-Type': 'application/json' } })
   
