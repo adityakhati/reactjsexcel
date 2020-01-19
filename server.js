@@ -58,7 +58,7 @@ app.post('/send',(req, res) => {
 
     let data2={"total_elite":req.body.elitesum,"totalelitesilver":req.body.elitesilversum,
       "total_gold":req.body.elitegoldsum,"total_success":req.body.successCompsum,
-      "year":'2019',"below40":req.body.below40sum};
+      "year":req.body.year,"below40":req.body.below40sum};
       console.log(req.body.elitesum);
       					
       let sql3 = "INSERT INTO totalanalysis set ?";
@@ -80,7 +80,7 @@ app.post('/send',(req, res) => {
       email_id:req.body.rows[i][5],dob:req.body.rows[i][6],role:req.body.rows[i][7],department:req.body.rows[i][8]
       ,year_of_passing:req.body.rows[i][9],clg_roll_no:req.body.rows[i][10],score_assign:req.body.rows[i][11],
       exam_score:req.body.rows[i][12],final_score:req.body.rows[i][13],certificate_type:req.body.rows[i][14],
-      topper:req.body.rows[i][15],year:'2019'};
+      topper:req.body.rows[i][15],year:req.body.year};
     let sql1 = "INSERT INTO result set ?";
     let query1 = connection.query(sql1, data,(err, results) => {
       // if(!!err){
