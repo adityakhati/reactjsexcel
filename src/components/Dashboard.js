@@ -55,7 +55,7 @@ event.preventDefault();
           <ul class="menu">
           <li name=""><a href="http://localhost:3001/Dashboard">Dashboard</a></li>
  
-          <li name="abc"><a href="#">Log-Out </a></li>
+          <li name="abc"><a href="http://localhost:3001/Home">Log-Out </a></li>
           
        
           
